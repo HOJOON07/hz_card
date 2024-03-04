@@ -18,6 +18,5 @@
     "types": ["jest", "@testing-library/jest-dom"],
     "jsxImportSource": "@emotion/react"
   },
-  "include": ["src", "tsconfig.paths.json"],
-  "extends": "./tsconfig.paths.json"
+  "include": ["src"]
 }
