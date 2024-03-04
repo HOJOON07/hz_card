@@ -15,7 +15,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["jest", "@testing-library/jest-dom"]
+    "types": ["jest", "@testing-library/jest-dom"],
+    "jsxImportSource": "@emotion/react"
   },
   "include": ["src", "tsconfig.paths.json"],
   "extends": "./tsconfig.paths.json"
