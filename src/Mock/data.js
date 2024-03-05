@@ -393,13 +393,13 @@ export const card_list = [
 
 export const adBanners = [
   {
-    title: 'Easy all 카드',
+    title: '알뜰교통플러스 카드',
     description: '기간이 얼마 남지 않았어요',
-    link: '/card/0FCQ0P3fHwIuHfEkFb98',
+    link: '/card/2ELYopnpkhnxz95eIzrn',
   },
   {
-    title: '굿데이올림카드',
+    title: '탄탄대로 오토카드',
     description: '신규회원 연회비 지원해드려요',
-    link: '/card/1A1vyiHfHyZagksPfvsS',
+    link: '/card/3ECAY5uAJ6Lar9bgcNjH',
   },
 ];
