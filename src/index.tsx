@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Global } from '@emotion/react';
 import globalStyles from './styles/globalStyles';
 import { AlertContextProvider } from './context/AlertContext';
+import { jsx } from '@emotion/react';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
