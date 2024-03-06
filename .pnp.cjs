@@ -48,6 +48,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-prettier", "virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:5.1.3"],\
           ["eslint-plugin-react", "virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:7.34.0"],\
           ["firebase", "npm:10.8.1"],\
+          ["framer-motion", "virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:11.0.8"],\
           ["lodash", "npm:4.17.21"],\
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
@@ -3681,6 +3682,14 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@emotion/is-prop-valid", [\
+      ["npm:0.8.8", {\
+        "packageLocation": "../../../.yarn/berry/cache/@emotion-is-prop-valid-npm-0.8.8-261a0f2426-10c0.zip/node_modules/@emotion/is-prop-valid/",\
+        "packageDependencies": [\
+          ["@emotion/is-prop-valid", "npm:0.8.8"],\
+          ["@emotion/memoize", "npm:0.7.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:1.2.2", {\
         "packageLocation": "../../../.yarn/berry/cache/@emotion-is-prop-valid-npm-1.2.2-53f93f2b2d-10c0.zip/node_modules/@emotion/is-prop-valid/",\
         "packageDependencies": [\
@@ -3691,6 +3700,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@emotion/memoize", [\
+      ["npm:0.7.4", {\
+        "packageLocation": "../../../.yarn/berry/cache/@emotion-memoize-npm-0.7.4-5648cf11b8-10c0.zip/node_modules/@emotion/memoize/",\
+        "packageDependencies": [\
+          ["@emotion/memoize", "npm:0.7.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:0.8.1", {\
         "packageLocation": "../../../.yarn/berry/cache/@emotion-memoize-npm-0.8.1-9b1e35ff15-10c0.zip/node_modules/@emotion/memoize/",\
         "packageDependencies": [\
@@ -11329,6 +11345,34 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["framer-motion", [\
+      ["npm:11.0.8", {\
+        "packageLocation": "../../../.yarn/berry/cache/framer-motion-npm-11.0.8-a3d819932a-10c0.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "npm:11.0.8"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:11.0.8", {\
+        "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-28d483d55c/4/.yarn/berry/cache/framer-motion-npm-11.0.8-a3d819932a-10c0.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:11.0.8"],\
+          ["@emotion/is-prop-valid", "npm:0.8.8"],\
+          ["@types/react", "npm:18.2.61"],\
+          ["@types/react-dom", "npm:18.2.19"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:18.2.0"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["fresh", [\
       ["npm:0.5.2", {\
         "packageLocation": "../../../.yarn/berry/cache/fresh-npm-0.5.2-ad2bb4c0a2-10c0.zip/node_modules/fresh/",\
@@ -12051,6 +12095,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-prettier", "virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:5.1.3"],\
           ["eslint-plugin-react", "virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:7.34.0"],\
           ["firebase", "npm:10.8.1"],\
+          ["framer-motion", "virtual:8d649744bbf12b5c3f2f2338d2f61edba43e97d30f95c6b01d64bad53a4d0d511a59f413ffcaea891e72b33016955c5841c8d226edb8f5fd38b24c48b565e014#npm:11.0.8"],\
           ["lodash", "npm:4.17.21"],\
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\

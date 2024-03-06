@@ -4,7 +4,7 @@ import Text from './Text';
 
 interface TopProps {
   title: string;
-  subTitle: string;
+  subTitle?: string;
 }
 
 export default function Top({ title, subTitle }: TopProps) {

@@ -9,11 +9,7 @@ import { AlertContextProvider } from './context/AlertContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const client = new QueryClient({
-  defaultOptions: {
-    queries: {
-      cacheTime: 1000 * 60 * 5,
-    },
-  },
+  defaultOptions: {},
 });
 
 const root = ReactDOM.createRoot(
