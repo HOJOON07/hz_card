@@ -1,12 +1,12 @@
 import { collection, doc, getDocs } from 'firebase/firestore';
 import { store } from './firebase';
 
-import { COLEECTIONS } from '../constants';
-import { AdBanner, Card } from '../models/card';
+import { COLLECTIONS } from '../constants';
+import { AdBanner } from '../models/card';
 
 async function getAdBanners() {
   const adBannerSnapShot = await getDocs(
-    collection(store, COLEECTIONS.ADBANNER),
+    collection(store, COLLECTIONS.ADBANNER),
   );
   return adBannerSnapShot.docs.map((doc) => ({
     id: doc.id,

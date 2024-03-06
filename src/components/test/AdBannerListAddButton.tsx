@@ -3,14 +3,14 @@ import { adBanners } from '../../Mock/data';
 
 import { store } from '../../remote/firebase';
 import { collection, doc, writeBatch } from 'firebase/firestore';
-import { COLEECTIONS } from '../../constants';
+import { COLLECTIONS } from '../../constants';
 
 export default function AdBannerListAddButton() {
   const handleButtonClick = async () => {
     const batch = writeBatch(store);
 
     adBanners.forEach((adCard) => {
-      const docRef = doc(collection(store, COLEECTIONS.ADBANNER));
+      const docRef = doc(collection(store, COLLECTIONS.ADBANNER));
 
       batch.set(docRef, adCard);
     });

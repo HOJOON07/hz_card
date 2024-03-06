@@ -3,14 +3,14 @@ import { card_list } from '../../Mock/data';
 
 import { store } from '../../remote/firebase';
 import { collection, doc, writeBatch } from 'firebase/firestore';
-import { COLEECTIONS } from '../../constants';
+import { COLLECTIONS } from '../../constants';
 
 export default function CardListAddButton() {
   const handleButtonClick = async () => {
     const batch = writeBatch(store);
 
     card_list.forEach((card) => {
-      const docRef = doc(collection(store, COLEECTIONS.CARD));
+      const docRef = doc(collection(store, COLLECTIONS.CARD));
 
       batch.set(docRef, card);
     });
