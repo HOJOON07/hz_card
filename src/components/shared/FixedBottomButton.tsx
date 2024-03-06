@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { createPortal } from 'react-dom';
 
@@ -26,6 +26,12 @@ export default function FixedBottomButton({
   );
 }
 
+const SlideUp = keyframes`
+  to{
+    transform: translateY(0);
+  }
+`;
+
 const Container = styled.div`
   position: fixed;
   left: 0;
@@ -33,6 +39,8 @@ const Container = styled.div`
   bottom: 0;
   background-color: ${colors.white};
   padding: 20px 10px 8px;
+  transform: translateY(100%);
+  animation: ${SlideUp} 1.1s ease-in-out forwards;
 `;
 
 const ButtonStyles = css`

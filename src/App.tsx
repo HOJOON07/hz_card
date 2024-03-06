@@ -3,11 +3,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Test from './pages/Test';
 import HomePage from './pages/Home';
 import CardPage from './pages/Card';
+import ScrollToTop from './components/shared/ScrollToTop';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" Component={HomePage} />
           <Route path="/test" Component={Test} />
