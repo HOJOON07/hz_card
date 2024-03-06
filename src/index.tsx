@@ -6,6 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { Global } from '@emotion/react';
 import globalStyles from './styles/globalStyles';
 import { AlertContextProvider } from './context/AlertContext';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 1000 * 60 * 5,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -13,9 +22,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Global styles={globalStyles} />
-    <AlertContextProvider>
-      <App />
-    </AlertContextProvider>
+    <QueryClientProvider client={client}>
+      <AlertContextProvider>
+        <App />
+      </AlertContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 );
 
