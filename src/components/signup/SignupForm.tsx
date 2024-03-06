@@ -1,25 +1,25 @@
 import { css } from '@emotion/react';
 import React, { useCallback, useMemo, useState } from 'react';
-import { FormValues } from '../../models/signup';
+import { SignupFormValues } from '../../models/signup';
 import FixedBottomButton from '../shared/FixedBottomButton';
 import Flex from '../shared/Flex';
 import Spacing from '../shared/Spacing';
 import TextField from '../shared/TextField';
 import validator from 'validator';
 
-export default function Form({
+export default function SignupForm({
   onSubmit,
 }: {
-  onSubmit: (formValues: FormValues) => void;
+  onSubmit: (formValues: SignupFormValues) => void;
 }) {
-  const [formValues, setFormValues] = useState<FormValues>({
+  const [formValues, setFormValues] = useState<SignupFormValues>({
     email: '',
     password: '',
     rePassword: '',
     name: '',
   });
 
-  const [dirty, setDirty] = useState<Partial<FormValues>>({});
+  const [dirty, setDirty] = useState<Partial<SignupFormValues>>({});
 
   const handleBlur = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -31,9 +31,9 @@ export default function Form({
     }));
   }, []);
 
-  const validate = (formValues: FormValues) => {
+  const validate = (formValues: SignupFormValues) => {
     // errors = {email:~~, rePassword:~~, name:~~, password:~~}
-    let errors: Partial<FormValues> = {};
+    let errors: Partial<SignupFormValues> = {};
     if (validator.isEmail(formValues.email) === false) {
       errors.email = '이메일 형식을 확인해주세요';
     }
@@ -55,9 +55,6 @@ export default function Form({
 
   const handleFormValues = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(e.target.name);
-      console.log(e.target.value);
-
       const {
         target: { name, value },
       } = e;
@@ -73,7 +70,6 @@ export default function Form({
 
   const 제출가능한상태인가 = Object.keys(errors).length === 0;
 
-  console.log(errors);
   return (
     <Flex direction="column" css={FormContainerStyles}>
       <TextField
