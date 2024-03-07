@@ -1,8 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { TERMS_LIST } from '../../constants/apply';
-import { ApplyValues } from '../../models/applyTypes';
+
 import Agreement from '../shared/Agreement';
 import FixedBottomButton from '../shared/FixedBottomButton';
+
+import { TERMS_LIST } from '../../constants/apply';
+import { ApplyValues } from '../../models/applyTypes';
 
 export default function Terms({
   onNext,
@@ -10,6 +12,7 @@ export default function Terms({
   onNext: (terms: ApplyValues['terms']) => void;
 }) {
   const [termsAgreements, setTermsAgreements] = useState(() => {
+    // Record type 은 key:string, value:boolean
     return TERMS_LIST.reduce<Record<string, boolean>>(
       (prev, term) => ({
         ...prev,
@@ -18,10 +21,11 @@ export default function Terms({
       {},
     );
   });
+
   const allAgreeMent = Object.values(termsAgreements).every((agree) => agree);
+
   const handleAllAgreement = useCallback(
     (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
-      // console.log(checked);
       setTermsAgreements((prev) => {
         return Object.keys(prev).reduce(
           (prev, key) => ({

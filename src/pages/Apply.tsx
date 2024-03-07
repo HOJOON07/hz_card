@@ -1,28 +1,55 @@
-import { useState, useEffect } from 'react';
-import BasicInfo from '../components/apply/BasicInfo';
-import CardInfo from '../components/apply/CardInfo';
-import Terms from '../components/apply/Terms';
-
-import { ApplyValues } from '../models/applyTypes';
-
-type InfoValues = Pick<ApplyValues, 'salery' | 'creditScore' | 'payDate'>;
+import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Apply from '../components/apply';
+import useApplyCardMutaion from '../components/apply/hooks/useApplyCardMutaion';
+import usePollApplyStatus from '../components/apply/hooks/usePollApplyStatus';
+import useUser from '../hooks/auth/useUser';
+import { APPLY_STAUTS } from '../models/applyTypes';
+import { upDateApplyCard } from '../remote/apply';
 
 export default function ApplyPage() {
-  const [step, setStep] = useState(1);
+  const navigate = useNavigate();
 
-  const handelTermsChange = (terms: ApplyValues['terms']) => {
-    console.log('terms', terms);
-  };
+  const [readyToPoll, setReadyToPoll] = useState<boolean>(false);
+  const user = useUser();
+  const { id } = useParams() as { id: string };
 
-  const handeBasicInfoChange = (infoValues: InfoValues) => {
-    console.log(infoValues);
-  };
+  usePollApplyStatus({
+    onSuccess: async () => {
+      await upDateApplyCard({
+        cardId: id,
+        userId: user?.uid as string,
+        applyValues: {
+          status: APPLY_STAUTS.COMPLETE,
+        },
+      });
+      navigate(`/apply/done?success=true`, {
+        replace: true,
+      });
+    },
+    onError: async () => {
+      await upDateApplyCard({
+        cardId: id,
+        userId: user?.uid as string,
+        applyValues: {
+          status: APPLY_STAUTS.REJECT,
+        },
+      });
+      navigate(`/apply/done?success=false`, {
+        replace: true,
+      });
+    },
+    enabled: readyToPoll,
+  });
+  const { mutate, isLoading } = useApplyCardMutaion({
+    onSuccess: () => {
+      setReadyToPoll(true);
+    },
+    onError: () => {},
+  });
 
-  return (
-    <div>
-      {step === 0 ? <Terms onNext={handelTermsChange} /> : null}
-      {step === 1 ? <BasicInfo onNext={handeBasicInfoChange} /> : null}
-      {step === 2 ? <CardInfo /> : null}
-    </div>
-  );
+  if (readyToPoll || isLoading) {
+    return <div>Loading...</div>;
+  }
+  return <Apply onSubmit={mutate} />;
 }

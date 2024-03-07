@@ -25,7 +25,6 @@ export default function BasicInfo({
 
   const allChecked = Object.values(infoValues).every((value) => value);
 
-  console.log(allChecked);
   return (
     <div>
       <Select
