@@ -16,51 +16,70 @@ export default function Apply({
 }) {
   const user = useUser();
   const { id } = useParams() as { id: string };
-  const [step, setStep] = useState(0);
-  const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>({
-    userId: user?.uid,
-    cardId: id,
+
+  const storageKey = `applied-${user?.uid}-${id}`;
+  // const [step, setStep] = useState(0);
+
+  // 게으른 초기화
+  const [applyValues, setApplyValues] = useState<Partial<ApplyValues>>(() => {
+    const applied = localStorage.getItem(storageKey);
+
+    if (applied == null) {
+      return {
+        userId: user?.uid,
+        cardId: id,
+        step: 0,
+      };
+    }
+    return JSON.parse(applied);
   });
 
   const handelTermsChange = (terms: ApplyValues['terms']) => {
     setApplyValues((prev) => ({
       ...prev,
       terms,
+      step: (prev.step as number) + 1,
     }));
-    setStep((step) => step + 1);
   };
 
   const handeBasicInfoChange = (infoValues: InfoValues) => {
     setApplyValues((prev) => ({
       ...prev,
       ...infoValues,
+      step: (prev.step as number) + 1,
     }));
-
-    setStep((step) => step + 1);
   };
   const handleCardInfoChange = (cardInfoValues: CardInfoValues) => {
     setApplyValues((prev) => ({
       ...prev,
       ...cardInfoValues,
+      step: (prev.step as number) + 1,
     }));
-    setStep((step) => step + 1);
   };
 
   useEffect(() => {
-    if (step === 3) {
+    if (applyValues.step === 3) {
+      localStorage.removeItem(storageKey);
       onSubmit({
         ...applyValues,
         appliedAt: new Date(),
         status: APPLY_STAUTS.READY,
       } as ApplyValues);
+    } else {
+      // console.log(applyValues);
+      localStorage.setItem(storageKey, JSON.stringify(applyValues));
     }
-  }, [applyValues, step, onSubmit]);
+  }, [applyValues, onSubmit, storageKey]);
 
   return (
     <div>
-      {step === 0 ? <Terms onNext={handelTermsChange} /> : null}
-      {step === 1 ? <BasicInfo onNext={handeBasicInfoChange} /> : null}
-      {step === 2 ? <CardInfo onNext={handleCardInfoChange} /> : null}
+      {applyValues.step === 0 ? <Terms onNext={handelTermsChange} /> : null}
+      {applyValues.step === 1 ? (
+        <BasicInfo onNext={handeBasicInfoChange} />
+      ) : null}
+      {applyValues.step === 2 ? (
+        <CardInfo onNext={handleCardInfoChange} />
+      ) : null}
     </div>
   );
 }
