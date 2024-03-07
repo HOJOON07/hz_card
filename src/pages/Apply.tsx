@@ -4,6 +4,7 @@ import Apply from '../components/apply';
 import useAppliedCard from '../components/apply/hooks/useAppliedCard';
 import useApplyCardMutaion from '../components/apply/hooks/useApplyCardMutaion';
 import usePollApplyStatus from '../components/apply/hooks/usePollApplyStatus';
+import FullPageLoader from '../components/shared/FullPageLoader';
 import { useAlertContext } from '../context/AlertContext';
 import useUser from '../hooks/auth/useUser';
 import { APPLY_STAUTS } from '../models/applyTypes';
@@ -81,7 +82,7 @@ export default function ApplyPage() {
   }
 
   if (readyToPoll || isLoading) {
-    return <div>Loading...</div>;
+    return <FullPageLoader message="카드를 신청중입니다." />;
   }
   return <Apply onSubmit={mutate} />;
 }
