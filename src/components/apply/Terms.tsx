@@ -1,12 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { TERMS_LIST } from '../../constants/apply';
+import { ApplyValues } from '../../models/applyTypes';
 import Agreement from '../shared/Agreement';
 import FixedBottomButton from '../shared/FixedBottomButton';
 
 export default function Terms({
   onNext,
 }: {
-  onNext: (terms: string[]) => void;
+  onNext: (terms: ApplyValues['terms']) => void;
 }) {
   const [termsAgreements, setTermsAgreements] = useState(() => {
     return TERMS_LIST.reduce<Record<string, boolean>>(
