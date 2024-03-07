@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import FixedBottomButton from '../components/shared/FixedBottomButton';
 import Flex from '../components/shared/Flex';
 import ListRow from '../components/shared/ListRow';
@@ -9,15 +9,32 @@ import Top from '../components/shared/Top';
 import { getCard } from '../remote/card';
 
 import { motion } from 'framer-motion';
+import { useCallback } from 'react';
+import useUser from '../hooks/auth/useUser';
+import { useAlertContext } from '../context/AlertContext';
 
 export default function CardPage() {
+  const navigate = useNavigate();
+  const user = useUser();
+  const { open } = useAlertContext();
   const { id = '' } = useParams();
   const { data } = useQuery(['card', id], () => getCard(id), {
     // id가 빈값이 아닐때만 호출하도록
     enabled: id !== '',
   });
 
-  console.log(data);
+  const movoToApply = useCallback(() => {
+    if (user == null) {
+      open({
+        title: '로그인이 필요한 기능입니다.',
+        onButtonClick: () => {
+          navigate(`/signin`);
+        },
+      });
+      return;
+    }
+    navigate(`/apply/${id}`);
+  }, [id, navigate, open, user]);
 
   return (
     <div>
@@ -41,10 +58,10 @@ export default function CardPage() {
               ease: [0.25, 0.1, 0.25, 0.1],
               delay: index * 0.1,
             }}
+            key={text}
           >
             <ListRow
               as="div"
-              key={text}
               left={<IconCheck />}
               contents={
                 <ListRow.Texts title={`헤택 ${index + 1}`} subTitle={text} />
@@ -59,7 +76,7 @@ export default function CardPage() {
           <Text typoghraphy="t7">{removeHtmlTags(data.promotion.terms)}</Text>
         </Flex>
       ) : null}
-      <FixedBottomButton label="신청하기" onClick={() => {}} />
+      <FixedBottomButton label="신청하기" onClick={movoToApply} />
     </div>
   );
 }
