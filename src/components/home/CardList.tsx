@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { flatten } from 'lodash';
+import flatten from 'lodash.flatten';
 import { useCallback, useEffect, useRef } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
