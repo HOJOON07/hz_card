@@ -12,6 +12,8 @@ import { motion } from 'framer-motion';
 import { useCallback } from 'react';
 import useUser from '../hooks/auth/useUser';
 import { useAlertContext } from '../context/AlertContext';
+import Review from '../components/card/Review';
+import Spacing from '../components/shared/Spacing';
 
 export default function CardPage() {
   const navigate = useNavigate();
@@ -76,6 +78,9 @@ export default function CardPage() {
           <Text typoghraphy="t7">{removeHtmlTags(data.promotion.terms)}</Text>
         </Flex>
       ) : null}
+      <Spacing size={1000} />
+      <Review />
+      <Spacing size={100} />
       <FixedBottomButton
         label="1분만에 신청하고 혜택받기"
         onClick={movoToApply}
