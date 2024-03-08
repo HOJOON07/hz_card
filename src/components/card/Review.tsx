@@ -22,7 +22,7 @@ export default function Review() {
       enabled: inView,
     },
   );
-  console.log(inView);
+
   if (isLoading)
     return (
       <>

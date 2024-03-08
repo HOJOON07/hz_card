@@ -15,7 +15,7 @@ export default function useApplyCardMutaion({
   const { open } = useAlertContext();
   return useMutation((applyValues: ApplyValues) => applyCard(applyValues), {
     onSuccess: () => {
-      console.log('카드 추가');
+      // console.log('카드 추가');
       onSuccess();
     },
     onError: () => {

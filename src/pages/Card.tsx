@@ -78,7 +78,7 @@ export default function CardPage() {
           <Text typoghraphy="t7">{removeHtmlTags(data.promotion.terms)}</Text>
         </Flex>
       ) : null}
-      <Spacing size={1000} />
+      <Spacing size={100} />
       <Review />
       <Spacing size={100} />
       <FixedBottomButton
