@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useUser from '../../hooks/auth/useUser';
 import { ApplyValues, APPLY_STAUTS } from '../../models/applyTypes';
+import ProgressBar from '../shared/ProgressBar';
 import BasicInfo from './BasicInfo';
 import CardInfo from './CardInfo';
 import Terms from './Terms';
@@ -73,6 +74,7 @@ export default function Apply({
 
   return (
     <div>
+      <ProgressBar progress={(applyValues.step as number) / 3} />
       {applyValues.step === 0 ? <Terms onNext={handelTermsChange} /> : null}
       {applyValues.step === 1 ? (
         <BasicInfo onNext={handeBasicInfoChange} />
