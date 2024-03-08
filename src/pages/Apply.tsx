@@ -10,6 +10,12 @@ import useUser from '../hooks/auth/useUser';
 import { APPLY_STAUTS } from '../models/applyTypes';
 import { upDateApplyCard } from '../remote/apply';
 
+const STAUS_MESSAGE = {
+  [APPLY_STAUTS.READY]: '카드 심사를 준비하고 있습니다.',
+  [APPLY_STAUTS.PROGRESS]: '카드를 심사중입니다. 잠시만 기다려주세요',
+  [APPLY_STAUTS.COMPLETE]: '카드 신청이 완료되었습니다.',
+};
+
 export default function ApplyPage() {
   const navigate = useNavigate();
   const { open } = useAlertContext();
@@ -43,7 +49,7 @@ export default function ApplyPage() {
     },
   });
 
-  usePollApplyStatus({
+  const { data: status } = usePollApplyStatus({
     onSuccess: async () => {
       await upDateApplyCard({
         cardId: id,
@@ -82,7 +88,7 @@ export default function ApplyPage() {
   }
 
   if (readyToPoll || isLoading) {
-    return <FullPageLoader message="카드를 신청중입니다." />;
+    return <FullPageLoader message={STAUS_MESSAGE[status ?? 'READY']} />;
   }
   return <Apply onSubmit={mutate} />;
 }

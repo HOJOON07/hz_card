@@ -76,7 +76,10 @@ export default function CardPage() {
           <Text typoghraphy="t7">{removeHtmlTags(data.promotion.terms)}</Text>
         </Flex>
       ) : null}
-      <FixedBottomButton label="신청하기" onClick={movoToApply} />
+      <FixedBottomButton
+        label="1분만에 신청하고 혜택받기"
+        onClick={movoToApply}
+      />
     </div>
   );
 }
