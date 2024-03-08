@@ -2,8 +2,6 @@ import { FirebaseError } from 'firebase/app';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Flex from '../components/shared/Flex';
-import TextField from '../components/shared/TextField';
 import SigninForm from '../components/signin/SigninForm';
 import { useAlertContext } from '../context/AlertContext';
 import { SigninFormValues } from '../models/signin';
@@ -40,7 +38,7 @@ export default function SigninPage() {
 
       // console.log(formValues);
     },
-    [open],
+    [navigate, open],
   );
   return (
     <div>
