@@ -26,6 +26,7 @@ export default function CardList() {
       getNextPageParam: (snapshot) => {
         return snapshot.lastVisible;
       },
+      suspense: true,
       refetchOnWindowFocus: false,
     },
   );
@@ -70,7 +71,7 @@ export default function CardList() {
           );
         })}
       </ul>
-      {(isFetching || hasNextPage) && <div>로딩중입니다.</div>}
+      {(isFetching || hasNextPage) && <ListRow.Skeleton />}
       <div css={refStyles} ref={ref}></div>
     </div>
   );

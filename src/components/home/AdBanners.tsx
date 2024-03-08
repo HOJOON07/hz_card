@@ -12,7 +12,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useQuery } from 'react-query';
 
 export default function AdBanners() {
-  const { data } = useQuery({ queryKey: ['adBanners'], queryFn: getAdBanners });
+  const { data, isLoading } = useQuery({
+    queryKey: ['adBanners'],
+    queryFn: getAdBanners,
+  });
+
+  if (data == null || isLoading) {
+    return (
+      <Container>
+        <Flex direction="column" css={bannerContainerStyles}>
+          <Text bold={true}>&nbsp;</Text>
+          <Text typoghraphy="t7">&nbsp;</Text>
+        </Flex>
+      </Container>
+    );
+  }
   // console.log(data);
   return (
     <Container>
